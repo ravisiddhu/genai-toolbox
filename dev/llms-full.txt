@@ -5992,17 +5992,20 @@ cluster][alloydb-free-trial].
 - [`postgres-list-installed-extensions`](../tools/postgres/postgres-list-installed-extensions.md)
   List installed extensions in a PostgreSQL database.
 
+- [`postgres-long-running-transactions`](../tools/postgres/postgres-long-running-transactions.md)
+  List long running transactions in a PostgreSQL database.
+
+- [`postgres-list-locks`](../tools/postgres/postgres-list-locks.md)
+  List lock stats in a PostgreSQL database.
+
+- [`postgres-replication-stats`](../tools/postgres/postgres-replication-stats.md)
+  List replication stats in a PostgreSQL database.
+
 - [`postgres-list-views`](../tools/postgres/postgres-list-views.md)
   List views in an AlloyDB for PostgreSQL database.
 
 - [`postgres-list-schemas`](../tools/postgres/postgres-list-schemas.md)
   List schemas in an AlloyDB for PostgreSQL database.
-
-- [`postgres-database-overview`](../tools/postgres/postgres-database-overview.md)
-  Fetches the current state of the PostgreSQL server. 
-
-- [`postgres-list-triggers`](../tools/postgres/postgres-list-triggers.md)
-  List triggers in an AlloyDB for PostgreSQL database.
 
 ### Pre-built Configurations
 
@@ -6877,17 +6880,20 @@ to a database by following these instructions][csql-pg-quickstart].
 - [`postgres-list-installed-extensions`](../tools/postgres/postgres-list-installed-extensions.md)
   List installed extensions in a PostgreSQL database.
 
+- [`postgres-long-running-transactions`](../tools/postgres/postgres-long-running-transactions.md)
+  List long running transactions in a PostgreSQL database.
+
+- [`postgres-list-locks`](../tools/postgres/postgres-list-locks.md)
+  List lock stats in a PostgreSQL database.
+
+- [`postgres-replication-stats`](../tools/postgres/postgres-replication-stats.md)
+  List replication stats in a PostgreSQL database.
+
 - [`postgres-list-views`](../tools/postgres/postgres-list-views.md)
   List views in a PostgreSQL database.
 
 - [`postgres-list-schemas`](../tools/postgres/postgres-list-schemas.md)
   List schemas in a PostgreSQL database.
-
-- [`postgres-database-overview`](../tools/postgres/postgres-database-overview.md)
-  Fetches the current state of the PostgreSQL server. 
-
-- [`postgres-list-triggers`](../tools/postgres/postgres-list-triggers.md)
-  List triggers in a PostgreSQL database.
 
 ### Pre-built Configurations
 
@@ -8473,17 +8479,20 @@ reputation for reliability, feature robustness, and performance.
 - [`postgres-list-installed-extensions`](../tools/postgres/postgres-list-installed-extensions.md)
   List installed extensions in a PostgreSQL database.
 
+- [`postgres-long-running-transactions`](../tools/postgres/postgres-long-running-transactions.md)
+  List long running transactions in a PostgreSQL database.
+
+- [`postgres-list-locks`](../tools/postgres/postgres-list-locks.md)
+  List lock stats in a PostgreSQL database.
+
+- [`postgres-replication-stats`](../tools/postgres/postgres-replication-stats.md)
+  List replication stats in a PostgreSQL database.
+
 - [`postgres-list-views`](../tools/postgres/postgres-list-views.md)
   List views in a PostgreSQL database.
 
 - [`postgres-list-schemas`](../tools/postgres/postgres-list-views.md)
   List schemas in a PostgreSQL database.
-
-- [`postgres-database-overview`](../tools/postgres/postgres-database-overview.md)
-  Fetches the current state of the PostgreSQL server. 
-
-- [`postgres-list-triggers`](../tools/postgres/postgres-list-triggers.md)
-  List triggers in a PostgreSQL database.
 
 ### Pre-built Configurations
 
@@ -11878,8 +11887,6 @@ details on how to connect your AI tools (IDEs) to databases via Toolbox and MCP.
     *   `list_views`: Lists views in the database from pg_views with a default
         limit of 50 rows. Returns schemaname, viewname and the ownername.
     *   `list_schemas`: Lists schemas in the database. 
-    *   `database_overview`: Fetches the current state of the PostgreSQL server. 
-    *   `list_triggers`: Lists triggers in the database. 
 
 ## AlloyDB Postgres Admin
 
@@ -12050,8 +12057,6 @@ details on how to connect your AI tools (IDEs) to databases via Toolbox and MCP.
     *   `list_views`: Lists views in the database from pg_views with a default
         limit of 50 rows. Returns schemaname, viewname and the ownername.
     *   `list_schemas`: Lists schemas in the database. 
-    *   `database_overview`: Fetches the current state of the PostgreSQL server. 
-    *   `list_triggers`: Lists triggers in the database. 
 
 ## Cloud SQL for PostgreSQL Observability
 
@@ -12325,8 +12330,8 @@ details on how to connect your AI tools (IDEs) to databases via Toolbox and MCP.
 
 *   `--prebuilt` value: `postgres`
 *   **Environment Variables:**
-    *   `POSTGRES_HOST`: (Optional) The hostname or IP address of the PostgreSQL server.
-    *   `POSTGRES_PORT`: (Optional) The port number for the PostgreSQL server.
+    *   `POSTGRES_HOST`: The hostname or IP address of the PostgreSQL server.
+    *   `POSTGRES_PORT`: The port number for the PostgreSQL server.
     *   `POSTGRES_DATABASE`: The name of the database to connect to.
     *   `POSTGRES_USER`: The database username.
     *   `POSTGRES_PASSWORD`: The password for the database user.
@@ -12349,8 +12354,6 @@ details on how to connect your AI tools (IDEs) to databases via Toolbox and MCP.
     *   `list_views`: Lists views in the database from pg_views with a default
         limit of 50 rows. Returns schemaname, viewname and the ownername.
     *   `list_schemas`: Lists schemas in the database. 
-    *   `database_overview`: Fetches the current state of the PostgreSQL server. 
-    *   `list_triggers`: Lists triggers in the database. 
 
 ## Google Cloud Serverless for Apache Spark
 
