@@ -25,7 +25,6 @@ import (
 	"github.com/googleapis/genai-toolbox/internal/sources/postgres"
 	"github.com/googleapis/genai-toolbox/internal/tools"
 	"github.com/jackc/pgx/v5/pgxpool"
-	"github.com/lib/pq"
 )
 
 const kind string = "postgres-get-column-cardinality"
@@ -34,7 +33,7 @@ func getColumnCardinality(schema string, table string) string {
 	return fmt.Sprintf(`
 	SELECT
           'aa' AS table_name,
-          (SELECT COUNT(*) FROM %s.%s) AS table_cardinality;`, pq.QuuoteIdentifier(schema), pq.QuoteIdentifier(table))
+          (SELECT COUNT(*) FROM %s.%s) AS table_cardinality;`, schema, table)
 }
 
 //           (SELECT COUNT(DISTINCT $3) FROM $1.$2) AS column_cardinality;
@@ -145,7 +144,7 @@ func (t Tool) Invoke(ctx context.Context, params tools.ParamValues, accessToken 
 	}
 	sliceParams := newParams.AsSlice()
 
-	results, err := t.pool.Query(ctx, getColumnCardinality, sliceParams...)
+	results, err := t.pool.Query(ctx, getColumnCardinality("public", "employees"), sliceParams...)
 	if err != nil {
 		return nil, fmt.Errorf("unable to execute query: %w", err)
 	}
