@@ -62,6 +62,16 @@ tools:
         kind: postgres-replication-stats
         source: alloydb-pg-source
 
+    list_query_stats:
+        kind: postgres-list-query-stats
+        source: alloydb-pg-source
+        description: "Lists performance statistics for executed queries ordered by total time, filtering by database name pattern if provided. This tool requires the pg_stat_statements extension to be installed. The tool returns the database name, query text, execution count, timing metrics (total, min, max, mean), rows affected, and buffer cache I/O statistics (hits and reads)."
+
+    get_column_cardinality:
+        kind: postgres-get-column-cardinality
+        source: alloydb-pg-source
+        description: "The tool returns the table_name, the total row count as table_cardinality, and the count of unique values in the specified column as column_cardinality."
+
     list_autovacuum_configurations:
         kind: postgres-sql
         source: alloydb-pg-source
@@ -208,3 +218,5 @@ toolsets:
         - list_schemas
         - database_overview
         - list_triggers
+        - list_query_stats
+        - get_column_cardinality
