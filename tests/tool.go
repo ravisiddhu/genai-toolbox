@@ -34,6 +34,7 @@ import (
 	"github.com/google/uuid"
 	"github.com/googleapis/genai-toolbox/internal/server/mcp/jsonrpc"
 	"github.com/googleapis/genai-toolbox/internal/sources"
+	"github.com/jackc/pgx/v5"
 	"github.com/jackc/pgx/v5/pgxpool"
 )
 
@@ -3658,26 +3659,43 @@ func RunMSSQLListTablesTest(t *testing.T, tableNameParam, tableNameAuth string) 
 	}
 }
 
+func CreateAndLockPostgresTable(t *testing.T, ctx context.Context, pool *pgxpool.Pool, tableName string) func() {
+	_, err := pool.Exec(ctx, fmt.Sprintf("CREATE TABLE IF NOT EXISTS %s (id INT PRIMARY KEY)", tableName))
+	if err != nil {
+		t.Fatalf("unable to create table: %s", err)
+	}
+
+	tx, err := pool.BeginTx(ctx, pgx.TxOptions{})
+	if err != nil {
+		t.Fatalf("unable to create transaction: %s", err)
+	}
+	if _, err := tx.Exec(ctx, fmt.Sprintf("LOCK TABLE %s IN ACCESS EXCLUSIVE MODE", tableName)); err != nil {
+		t.Fatalf("unable to acquire lock: %s", err)
+	}
+
+	return func() {
+		if err := tx.Rollback(ctx); err != nil {
+			t.Fatalf("unable to rollback transaction: %s", err)
+		}
+		if _, err := pool.Exec(ctx, fmt.Sprintf("DROP TABLE IF EXISTS %s", tableName)); err != nil {
+			t.Fatalf("unable to drop table: %s", err)
+		}
+	}
+}
+
 // RunPostgresListLocksTest runs tests for the postgres list-locks tool
 func RunPostgresListLocksTest(t *testing.T, ctx context.Context, pool *pgxpool.Pool) {
+
+	// Create and lock a test table
+	cleanup := CreateAndLockPostgresTable(t, ctx, pool, "test_postgres_list_locks_table")
+	defer cleanup()
+
 	type lockDetails struct {
-		Pid           any    `json:"pid"`
-		Usename       string `json:"usename"`
-		Database      string `json:"database"`
-		RelName       string `json:"relname"`
-		LockType      string `json:"locktype"`
-		Mode          string `json:"mode"`
-		Granted       bool   `json:"granted"`
-		FastPath      bool   `json:"fastpath"`
-		VirtualXid    any    `json:"virtualxid"`
-		TransactionId any    `json:"transactionid"`
-		ClassId       any    `json:"classid"`
-		ObjId         any    `json:"objid"`
-		ObjSubId      any    `json:"objsubid"`
-		PageNumber    any    `json:"page"`
-		TupleNumber   any    `json:"tuple"`
-		VirtualBlock  any    `json:"virtualblock"`
-		BlockNumber   any    `json:"blockno"`
+		Pid     any    `json:"pid"`
+		Usename string `json:"usename"`
+		Query   string `json:"query"`
+		TrxID   string `json:"trxid"`
+		Locks   string `json:"locks"`
 	}
 
 	invokeTcs := []struct {
@@ -3690,7 +3708,7 @@ func RunPostgresListLocksTest(t *testing.T, ctx context.Context, pool *pgxpool.P
 			name:           "invoke list_locks with no arguments",
 			requestBody:    bytes.NewBuffer([]byte(`{}`)),
 			wantStatusCode: http.StatusOK,
-			expectResults:  false, // locks may or may not exist
+			expectResults:  true,
 		},
 	}
 	for _, tc := range invokeTcs {
@@ -3722,11 +3740,10 @@ func RunPostgresListLocksTest(t *testing.T, ctx context.Context, pool *pgxpool.P
 					t.Fatalf("failed to unmarshal result: %v, result string: %s", err, resultString)
 				}
 			}
-
 			// Verify that if results exist, they have the expected structure
 			for _, lock := range got {
-				if lock.LockType == "" {
-					t.Errorf("lock type should not be empty")
+				if lock.Locks == "" || !strings.Contains(lock.Locks, "AccessExclusiveLock") {
+					t.Errorf("lock details do not contain expected AccessExclusiveLock info: %+v", lock)
 				}
 			}
 		})
