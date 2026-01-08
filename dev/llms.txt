@@ -69,6 +69,7 @@ List of reference documentation for resources in Toolbox.
   - [Elasticsearch](https://ravisiddhu.github.io/genai-toolbox/dev/resources/sources/elasticsearch/): Elasticsearch is a distributed, free and open search and analytics engine  for all types of data, including textual, numerical, geospatial, structured,  and unstructured.
   - [Firebird](https://ravisiddhu.github.io/genai-toolbox/dev/resources/sources/firebird/): Firebird is a powerful, cross-platform, and open-source relational database.
   - [Firestore](https://ravisiddhu.github.io/genai-toolbox/dev/resources/sources/firestore/): Firestore is a NoSQL document database built for automatic scaling, high performance, and ease of application development. It's a fully managed, serverless database that supports mobile, web, and server development.
+  - [Gemini Data Analytics](https://ravisiddhu.github.io/genai-toolbox/dev/resources/sources/cloud-gda/): A "cloud-gemini-data-analytics" source provides a client for the Gemini Data Analytics API.
   - [HTTP](https://ravisiddhu.github.io/genai-toolbox/dev/resources/sources/http/): The HTTP source enables the Toolbox to retrieve data from a remote server using HTTP requests.
   - [Looker](https://ravisiddhu.github.io/genai-toolbox/dev/resources/sources/looker/): Looker is a business intelligence tool that also provides a semantic layer.
   - [MariaDB](https://ravisiddhu.github.io/genai-toolbox/dev/resources/sources/mariadb/): MariaDB is an open-source relational database compatible with MySQL.
@@ -82,6 +83,7 @@ List of reference documentation for resources in Toolbox.
   - [Redis](https://ravisiddhu.github.io/genai-toolbox/dev/resources/sources/redis/): Redis is a in-memory data structure store.
   - [Serverless for Apache Spark](https://ravisiddhu.github.io/genai-toolbox/dev/resources/sources/serverless-spark/): Google Cloud Serverless for Apache Spark lets you run Spark workloads without requiring you to provision and manage your own Spark cluster.
   - [SingleStore](https://ravisiddhu.github.io/genai-toolbox/dev/resources/sources/singlestore/): SingleStore is the cloud-native database built with speed and scale to power data-intensive applications.
+  - [Snowflake](https://ravisiddhu.github.io/genai-toolbox/dev/resources/sources/snowflake/): Snowflake is a cloud-based data platform.
   - [Spanner](https://ravisiddhu.github.io/genai-toolbox/dev/resources/sources/spanner/): Spanner is a fully managed database service from Google Cloud that combines  relational, key-value, graph, and search capabilities.
   - [SQL Server](https://ravisiddhu.github.io/genai-toolbox/dev/resources/sources/mssql/): SQL Server is a relational database management system (RDBMS).
   - [SQLite](https://ravisiddhu.github.io/genai-toolbox/dev/resources/sources/sqlite/): SQLite is a C-language library that implements a small, fast, self-contained,  high-reliability, full-featured, SQL database engine.
@@ -89,6 +91,8 @@ List of reference documentation for resources in Toolbox.
   - [Trino](https://ravisiddhu.github.io/genai-toolbox/dev/resources/sources/trino/): Trino is a distributed SQL query engine for big data analytics.
   - [Valkey](https://ravisiddhu.github.io/genai-toolbox/dev/resources/sources/valkey/): Valkey is an open-source, in-memory data structure store, forked from Redis.
   - [YugabyteDB](https://ravisiddhu.github.io/genai-toolbox/dev/resources/sources/yugabytedb/): YugabyteDB is a high-performance, distributed SQL database. 
+- [EmbeddingModels](https://ravisiddhu.github.io/genai-toolbox/dev/resources/embeddingmodels/): EmbeddingModels represent services that transform text into vector embeddings for semantic search.
+  - [Gemini Embedding](https://ravisiddhu.github.io/genai-toolbox/dev/resources/embeddingmodels/gemini/): Use Google's Gemini models to generate high-performance text embeddings for vector databases.
 - [Tools](https://ravisiddhu.github.io/genai-toolbox/dev/resources/tools/): Tools define actions an agent can take -- such as reading and writing to a source.
   - [AlloyDB AI NL](https://ravisiddhu.github.io/genai-toolbox/dev/resources/tools/alloydbainl/): AlloyDB AI NL Tool.
   - [AlloyDB for PostgreSQL](https://ravisiddhu.github.io/genai-toolbox/dev/resources/tools/alloydb/): Tools for AlloyDB for PostgreSQL.
@@ -106,6 +110,7 @@ List of reference documentation for resources in Toolbox.
   - [Elasticsearch](https://ravisiddhu.github.io/genai-toolbox/dev/resources/tools/elasticsearch/): Tools that work with Elasticsearch Sources.
   - [Firebird](https://ravisiddhu.github.io/genai-toolbox/dev/resources/tools/firebird/): Tools that work with Firebird Sources.
   - [Firestore](https://ravisiddhu.github.io/genai-toolbox/dev/resources/tools/firestore/): Tools that work with Firestore Sources.
+  - [Gemini Data Analytics](https://ravisiddhu.github.io/genai-toolbox/dev/resources/tools/cloudgda/): Tools for Gemini Data Analytics.
   - [HTTP](https://ravisiddhu.github.io/genai-toolbox/dev/resources/tools/http/): Tools that work with HTTP Sources.
   - [Looker](https://ravisiddhu.github.io/genai-toolbox/dev/resources/tools/looker/): Tools that work with Looker Sources.
   - [MindsDB Tools](https://ravisiddhu.github.io/genai-toolbox/dev/resources/tools/mindsdb/): MindsDB tools that enable SQL queries across hundreds of datasources and ML models.
@@ -118,6 +123,7 @@ List of reference documentation for resources in Toolbox.
   - [Redis](https://ravisiddhu.github.io/genai-toolbox/dev/resources/tools/redis/): Tools that work with Redis Sources.
   - [Serverless for Apache Spark](https://ravisiddhu.github.io/genai-toolbox/dev/resources/tools/serverless-spark/): Tools that work with Google Cloud Serverless for Apache Spark Sources.
   - [SingleStore](https://ravisiddhu.github.io/genai-toolbox/dev/resources/tools/singlestore/): Tools that work with SingleStore Sources
+  - [Snowflake](https://ravisiddhu.github.io/genai-toolbox/dev/resources/tools/snowflake/): Tools that work with Snowflake Sources.
   - [Spanner](https://ravisiddhu.github.io/genai-toolbox/dev/resources/tools/spanner/): Tools that work with Spanner Sources.
   - [SQL Server](https://ravisiddhu.github.io/genai-toolbox/dev/resources/tools/mssql/): Tools that work with SQL Server Sources, such as CloudSQL for SQL Server.
   - [SQLite](https://ravisiddhu.github.io/genai-toolbox/dev/resources/tools/sqlite/): Tools that work with SQLite Sources.
@@ -142,6 +148,7 @@ Samples and guides for using Toolbox.
   - [Gemini-CLI and OAuth](https://ravisiddhu.github.io/genai-toolbox/dev/samples/looker/looker_gemini_oauth/): How to connect to Looker from Gemini-CLI with end-user credentials
   - [Quickstart (MCP with Looker and Gemini-CLI)](https://ravisiddhu.github.io/genai-toolbox/dev/samples/looker/looker_gemini/): How to get started running Toolbox with Gemini-CLI and Looker as the source.
   - [Quickstart (MCP with Looker)](https://ravisiddhu.github.io/genai-toolbox/dev/samples/looker/looker_mcp_inspector/): How to get started running Toolbox with MCP Inspector and Looker as the source.
+- [Snowflake](https://ravisiddhu.github.io/genai-toolbox/dev/samples/snowflake/): How to get started running Toolbox with MCP Inspector and Snowflake as the source.
 
 ### About
 
